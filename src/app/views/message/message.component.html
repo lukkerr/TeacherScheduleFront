@@ -1,0 +1,93 @@
+<mat-spinner *ngIf="!loaded"></mat-spinner>
+<div *ngIf="loaded" class="div-message">
+  
+  <div *ngIf="flagShowPopup" #popUpBox class="popup-message" (click)="clickPoUp($event,popUpBox)">
+    <mat-card class="card-user-message">
+      <spa class="message-datetime">{{messagePopup.dateTime}}</spa>
+      <mat-card-title>{{messagePopup.title}}</mat-card-title>
+      <hr>
+      <p>Enviado de <b>{{messagePopup.userIdOrigin.name}} ({{messagePopup.userIdOrigin.registration}})</b></p>
+      <p>para <b>{{messagePopup.userIdDestination.name}} ({{messagePopup.userIdDestination.registration}})</b></p>
+      <hr>
+      <mat-card-content>
+        {{messagePopup.description}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="flagShowPopupCreate" #popUpBoxCreate class="popup" (click)="clickPoUpCreate($event,popUpBoxCreate)">
+    <mat-card class="card-user">
+      <mat-card-title>Enviar Messagem</mat-card-title>
+
+      <form>
+        <mat-form-field>
+          <input  matInput placeholder="Título" type="text" [(ngModel)]="messageCreateErase.title" name="title">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input  matInput placeholder="Contéudo"  [(ngModel)]="messageCreateErase.description" name="description">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="selectUserDestination">
+          <mat-label>Selecione o Destinatário</mat-label>
+          <mat-select [(ngModel)]="messageCreateErase.userIdDestination" name="UserDestination">
+            <mat-option *ngFor="let usuario of usuarios"  [value]="usuario.id">{{usuario.name}} ({{usuario.registration}})</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </form>
+
+      <button mat-raised-button #buttonSalvar (click)="createMessage(buttonSalvar, buttonCancelar)"  color="primary" >Salvar</button>
+      <button mat-raised-button #buttonCancelar (click)="showPopUp()" >Cancelar</button>
+    </mat-card>
+  </div>
+
+  <header>
+
+    <div class="row-add">
+      <h3>Mensagens</h3>
+
+      <button (click)="showPopUp()" mat-fab color="primary" aria-label="Adicionar nova mensagem">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="filter-box">
+      <mat-form-field class="input-pesquisar" appearance="fill">
+        <mat-label>Pesquisar por mensagens:</mat-label>
+        <input #inputSearch (input)="search(inputSearch)" matInput placeholder="Digite a mensagem desejada">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o Filtro</mat-label>
+        <mat-select [(ngModel)]="filterField" (selectionChange)="search(inputSearch)">
+          <mat-option [value]="''">-</mat-option>
+          <mat-option *ngFor="let item of [].constructor(displayedColumns.length); let i = index"  [value]="displayedColumns[i]">{{filterFields[i]}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </header>
+
+  <div class="content">
+    <mat-table #table [dataSource]="filterMensagem">
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Título</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Contéudo</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="changePopUp(row)"
+      [ngClass]="{'read-message': row.read}"></mat-row>
+
+    </mat-table>
+
+    <p *ngIf="filterMensagem.length === 0">Nenhuma mensagem encontrado.</p>
+  </div>
+</div>

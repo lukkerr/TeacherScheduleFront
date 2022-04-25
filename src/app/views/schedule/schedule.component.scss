@@ -1,0 +1,25 @@
+.div-schedule {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.card-user {
+  margin-left: 30px;
+}
+
+header {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 1000px;
+
+  h3 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}

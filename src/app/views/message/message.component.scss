@@ -1,0 +1,256 @@
+.div-message {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.card-user {
+  margin-left: 30px;
+}
+
+header {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 1000px;
+
+  .row-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    h3 {
+      margin: 0;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 40px;
+      height: 40px;
+      margin: 0;
+    }
+  }
+
+  mat-form-field.input-pesquisar, form-field.input-pesquisar * {
+    width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  max-width: 1000px;
+  background-color: #FFF;
+  margin-bottom: 50px;
+
+  mat-table {
+    width: 100%;
+
+    mat-row {
+      transition: background-color .2s;
+      cursor: pointer;
+    }
+
+    mat-row:hover {
+      background: #CDDFF9;
+    }
+
+    mat-row.read-message {
+      background-color: #CFCFCF;
+    }
+  }
+
+  p {
+    margin: 12px 0;
+    text-align: center;
+    font-weight: lighter;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.chat-box {
+  max-width: 1000px;
+  width: 90%;
+  min-height: calc(100vh - 195px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #BBB;
+  overflow-y: scroll;
+  padding: 10px 0;
+  
+  div {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(180deg, #FFF, #F1F1F1);
+    color: #000;
+    height: 40px;
+    padding: 0 10px;
+    width: calc(100% - 40px);
+    margin-bottom: 5px;
+    border-radius: 8px;
+
+    p {
+      display: flex;
+      width: 100%;
+      margin: 0;
+
+      span {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;  
+      }
+
+      span:first-child {
+        margin-right: auto;
+      }
+
+      span:nth-child(2) {
+        margin: 0 10px;
+      }
+
+      span:last-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  div.my-message {
+    i {
+      transform: rotate(45deg);
+    }
+  }
+
+  div.other-message {
+    i {
+      transform: rotate(225deg);
+    }
+  }
+
+  div:hover {
+    cursor: pointer;
+    background-image: linear-gradient(180deg, #8a94f1, #555bfb);
+    color: #FFF;
+  }
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0 0 0 / .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 98;
+
+  mat-card {
+    margin: auto 10px;
+    border-radius: 10px;
+
+    mat-card-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .delete-icon {
+      position: absolute;
+      margin: 0;
+      right: -10px;
+      top: -10px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+
+      mat-form-field, p {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 480px) {
+      form {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      mat-form-field, p {
+        margin: auto 5px;
+      }
+    }
+  }
+}
+
+.popup-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0 0 0 / .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 98;
+
+  mat-card {
+    margin: auto 10px;
+    border-radius: 10px;
+    width: calc(100vw - 20px);
+    max-width: 500px;
+
+    .message-datetime {
+      position: absolute;
+      right: 16px;
+      top: 13px;
+    }
+
+    mat-card-title {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 18px;
+      margin-right: 120px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    mat-card-content {
+      height: 200px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+
+
+.filter-box {
+  display: flex;
+  justify-content: space-between;
+
+  .input-pesquisar {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-box {
+    flex-wrap: wrap;
+  }
+}

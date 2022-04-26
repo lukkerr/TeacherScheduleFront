@@ -68,7 +68,7 @@ export class MessageComponent implements OnInit {
   async getUsuarios() {
     await this.facadeService.read("usuario").subscribe(r => {
       this.usuarios = r.filter(u =>
-        (this.usuarioLogado.isTeacher && u.id !== this.usuarioLogado.id) || 
+        (this.usuarioLogado.isTeacher && u.id !== this.usuarioLogado.id) ||
         (!this.usuarioLogado.isTeacher && u.id !== this.usuarioLogado.id && u.isTeacher)
       ).sort((a,b) => a.id - b.id).reverse();
     });
@@ -85,7 +85,7 @@ export class MessageComponent implements OnInit {
     if (this.usuarioLogado !== null){
       if(this.messagePopupCreate.title != '' && this.messagePopupCreate.description != '' &&
         this.messagePopupCreate.userIdOrigin != 0 && this.messagePopupCreate.userIdDestination != 0) {
-        
+
         buttonSalvar.disabled = true;
         buttonCancelar.disabled = true;
 
@@ -134,8 +134,8 @@ export class MessageComponent implements OnInit {
     this.flagShowPopup = !this.flagShowPopup;
   }
 
-  changePopUpCreate(messageCreate: MessageCreate): void {
-    this.messagePopupCreate = messageCreate;    
+  changePopUpCreate(): void {
+    this.messagePopupCreate = <MessageCreate> JSON.parse( JSON.stringify(this.messageCreateErase) );
     this.flagShowPopupCreate = !this.flagShowPopupCreate;
   }
 
@@ -147,7 +147,7 @@ export class MessageComponent implements OnInit {
 
   clickPoUpCreate(event: Event, popUp: HTMLDivElement) {
     if(event.target === popUp) {
-      this.changePopUpCreate(null);
+      this.changePopUpCreate();
     }
   }
 }

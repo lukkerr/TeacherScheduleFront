@@ -96,13 +96,13 @@
       </ng-container>
 
       <ng-container matColumnDef="isTeacher">
-        <mat-header-cell *matHeaderCellDef>ADM</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Professor</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.isTeacher ? 'Sim' : 'Não'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="telephone">
         <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.telefone ? element.telephone : '-'}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.telephone ? element.telephone : '-'}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

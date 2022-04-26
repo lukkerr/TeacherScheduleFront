@@ -1,6 +1,6 @@
 <mat-spinner *ngIf="!loaded"></mat-spinner>
 <div *ngIf="loaded" class="div-message">
-  
+
   <div *ngIf="flagShowPopup" #popUpBox class="popup-message" (click)="clickPoUp($event,popUpBox)">
     <mat-card class="card-user-message">
       <spa class="message-datetime">{{messagePopup.dateTime}}</spa>
@@ -21,16 +21,16 @@
 
       <form>
         <mat-form-field>
-          <input  matInput placeholder="Título" type="text" [(ngModel)]="messageCreateErase.title" name="title">
+          <input  matInput placeholder="Título" type="text" [(ngModel)]="messagePopupCreate.title" name="title">
         </mat-form-field>
 
         <mat-form-field>
-          <input  matInput placeholder="Contéudo"  [(ngModel)]="messageCreateErase.description" name="description">
+          <input  matInput placeholder="Contéudo"  [(ngModel)]="messagePopupCreate.description" name="description">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="selectUserDestination">
           <mat-label>Selecione o Destinatário</mat-label>
-          <mat-select [(ngModel)]="messageCreateErase.userIdDestination" name="UserDestination">
+          <mat-select [(ngModel)]="messagePopupCreate.userIdDestination" name="UserDestination">
             <mat-option *ngFor="let usuario of usuarios"  [value]="usuario.id">{{usuario.name}} ({{usuario.registration}})</mat-option>
           </mat-select>
         </mat-form-field>

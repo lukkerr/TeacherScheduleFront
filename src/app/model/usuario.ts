@@ -7,4 +7,5 @@ export interface Usuario {
   isTeacher: boolean
   email: string
   telephone: string
+  addList?: boolean
 }

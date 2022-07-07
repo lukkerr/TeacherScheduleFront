@@ -24,10 +24,32 @@ header {
   width: 90%;
   max-width: 1000px;
 
-  h3 {
-    margin: 0;
+  .row-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
+
+    h3 {
+      margin: 0;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 40px;
+      height: 40px;
+      margin: 0;
+    }
   }
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .popup {
@@ -116,7 +138,7 @@ mat-spinner {
   grid-template-columns: repeat(2, 1fr);
   height: 70px;
   overflow-y: scroll;
-  
+
   label {
     width: 100%;
 

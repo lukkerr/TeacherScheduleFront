@@ -10,7 +10,7 @@
         Usuario
       </a>
 
-      <hr>
+      <hr *ngIf="usuarioLogado !== null && usuarioLogado.isTeacher">
 
       <a *ngIf="usuarioLogado !== null" (click)="menuAction()" mat-list-item routerLink="/horario">
         <i class="material-icons">

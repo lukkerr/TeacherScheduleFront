@@ -1,6 +1,6 @@
 <mat-spinner *ngIf="!loaded"></mat-spinner>
 <div *ngIf="loaded" class="div-schedule">
-  
+
   <div *ngIf="flagShowPopup" #popUpBox class="popup" (click)="clickPoUp($event,popUpBox)">
     <mat-card class="card-user">
       <mat-card-title>{{popUpMode === 'add' ? "Adicionar": "Editar"}} Horário</mat-card-title>
@@ -57,16 +57,19 @@
   </div>
 
   <header>
-    <h3>Horários</h3>
+    <div class="row-add">
+      <h3>Horários</h3>
+
+      <button *ngIf="usuarioLogado !== null && usuarioLogado.isTeacher" (click)="showPopUp('add', eraseScheduleCreate)" mat-fab color="primary" aria-label="Adicionar novo horário">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
 
     <mat-button-toggle-group #group="matButtonToggleGroup" [value]="flagTurno" aria-label="Favorite Color">
       <mat-button-toggle value="0">Manhã</mat-button-toggle>
       <mat-button-toggle value="1">Tarde</mat-button-toggle>
     </mat-button-toggle-group>
 
-    <button (click)="showPopUp('add', eraseScheduleCreate)" mat-fab color="primary" aria-label="Adicionar novo horário">
-      <mat-icon>add</mat-icon>
-    </button>
   </header>
 
   <div class="schedule-box">

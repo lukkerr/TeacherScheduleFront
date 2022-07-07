@@ -118,7 +118,7 @@ export class ScheduleComponent implements OnInit {
           title: "",
           // title: s.description,
           actions: [{
-            label: s.subject,
+            label: `${s.subject} | ${s.teacher.name}`,
             onClick: ({ event }: { event: CalendarEvent }): void => {
               if(this.usuarioLogado.isTeacher)
                 this.showPopUp('edit', s);

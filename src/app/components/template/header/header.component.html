@@ -8,7 +8,7 @@
 
   <div class="div-sessao">
     <span *ngIf="usuarioLogado !== null">Bem-vindo {{usuarioLogado.name}}</span>
-    <button *ngIf="usuarioLogado === null && !isPageLogin()" mat-raised-button color="primary" name="login" routerLink="/login" >Login</button>
-    <button *ngIf="usuarioLogado !== null" mat-raised-button color="accent" name="logout" (click)="logout()" >Logout</button>
+    <button *ngIf="usuarioLogado === null && !isPageLogin()" mat-raised-button style="background-color: #ad3616; color: #FFF" name="login" routerLink="/login" >Login</button>
+    <button *ngIf="usuarioLogado !== null" mat-raised-button style="background-color: #c95225; color: #FFF" name="logout" (click)="logout()" >Logout</button>
   </div>
 </mat-toolbar>

@@ -24,11 +24,11 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput type="datetime-local" placeholder="Data Hora Inicio" [ngModel]="schedule.dateTimeBegin | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="filterDateFrom = dateChanged($event, 'begin')" name="dateTimeBegin">
+          <input matInput type="datetime-local" placeholder="Data Hora Inicio" [ngModel]="schedule.dateTimeBegin | date:'yyyy-MM-ddTHH:mm':'-03000'" (ngModelChange)="dateChanged($event, 'begin')" name="dateTimeBegin">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput type="datetime-local" placeholder="Data Hora Fim" [ngModel]="schedule.dateTimeEnd | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="filterDateFrom = dateChanged($event, 'end')" name="dateTimeEnd">
+          <input matInput type="datetime-local" placeholder="Data Hora Fim" [ngModel]="schedule.dateTimeEnd | date:'yyyy-MM-ddTHH:mm':'-03000'" (ngModelChange)="dateChanged($event, 'end')" name="dateTimeEnd">
         </mat-form-field>
 
         <mat-form-field>
@@ -47,10 +47,10 @@
         <hr *ngIf="popUpMode === 'edit'">
       </div>
 
-      <button mat-raised-button #buttonSalvar (click)="saveSchedule(buttonSalvar, buttonCancelar)"  color="primary" >Salvar</button>
+      <button mat-raised-button #buttonSalvar (click)="saveSchedule(buttonSalvar, buttonCancelar)"  style="background-color: #ad3616; color: #FFF" >Salvar</button>
       <button mat-raised-button #buttonCancelar (click)="showPopUp(null, eraseUsuario)" >Cancelar</button>
 
-      <button *ngIf="popUpMode == 'edit'" (click)="openConfirm()" class="delete-icon" mat-fab color="primary">
+      <button *ngIf="popUpMode == 'edit'" (click)="openConfirm()" class="delete-icon" mat-fab style="background-color: #ad3616; color: #FFF">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card>
@@ -60,7 +60,7 @@
     <div class="row-add">
       <h3>Horários</h3>
 
-      <button *ngIf="usuarioLogado !== null && usuarioLogado.isTeacher" (click)="showPopUp('add', eraseScheduleCreate)" mat-fab color="primary" aria-label="Adicionar novo horário">
+      <button *ngIf="usuarioLogado !== null && usuarioLogado.isTeacher" (click)="showPopUp('add', eraseScheduleCreate)" mat-fab style="background-color: #ad3616; color: #FFF" aria-label="Adicionar novo horário">
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -89,7 +89,7 @@
   <div class="confirm">
     <p>Deseja realmente excluir esse horário?</p>
     <div>
-      <button mat-raised-button color="accent" (click)="eraseSchedule()">Sim</button>
+      <button mat-raised-button style="background-color: #c95225; color: #FFF" (click)="eraseSchedule()">Sim</button>
       <button mat-raised-button (click)="closeConfirm()">Não</button>
     </div>
   </div>

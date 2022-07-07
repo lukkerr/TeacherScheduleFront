@@ -149,15 +149,16 @@ export class ScheduleComponent implements OnInit {
 
   dateChanged(eventDate: string, type: string): Date | null {
     const newDate = !!eventDate ? new Date(eventDate) : null;
+
     if (newDate && type === 'begin')
       this.schedule.dateTimeBegin = newDate.toISOString();
     else if(newDate)
       this.schedule.dateTimeEnd = newDate.toISOString();
-    
+
     return newDate;
   }
 
-  
+
   saveSchedule(buttonSalvar: MatButton, buttonCancelar: MatButton): void {
     if (this.usuarioLogado !== null && this.usuarioLogado.isTeacher) {
 
@@ -165,7 +166,7 @@ export class ScheduleComponent implements OnInit {
 
       if(!Object.keys(this.schedule).includes("id")) {
         const schedule: ScheduleCreate = <ScheduleCreate> this.schedule
-        
+
         condictions.push(schedule.subject && schedule.subject.trim().length > 0);
         condictions.push(schedule.idTeacher != null && schedule.idTeacher != undefined);
         condictions.push(schedule.dateTimeBegin && schedule.dateTimeBegin.trim().length > 0);

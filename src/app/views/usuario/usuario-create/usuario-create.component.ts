@@ -93,10 +93,14 @@ export class UsuarioCreateComponent implements OnInit {
             this.showPopUp(null, this.eraseUsuario);
           });
         } else {
-          this.facadeService.create("usuario",this.usuario).subscribe(()=>{
-            this.facadeService.showMessage("usuario","Usuário Cadastrado!");
-            this.getUsuarios();
-            this.showPopUp(null, this.eraseUsuario);
+          this.facadeService.create("usuario",this.usuario).subscribe((user)=>{
+            if(user) {
+              this.facadeService.showMessage("usuario","Usuário Cadastrado!");
+              this.getUsuarios();
+              this.showPopUp(null, this.eraseUsuario);  
+            } else {
+              this.facadeService.showMessage("usuario","Erro: CPF ou Email já utilizados por outro usuário.");
+            }
           });
         }
       } else {

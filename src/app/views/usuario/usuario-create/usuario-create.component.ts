@@ -99,7 +99,9 @@ export class UsuarioCreateComponent implements OnInit {
               this.getUsuarios();
               this.showPopUp(null, this.eraseUsuario);  
             } else {
-              this.facadeService.showMessage("usuario","Erro: CPF ou Email já utilizados por outro usuário.");
+              this.facadeService.showMessage("usuario","Erro: CPF ou Email já utilizados por outro usuário");
+              buttonSalvar.disabled = false;
+              buttonCancelar.disabled = false;
             }
           });
         }
